@@ -1,34 +1,32 @@
 class Tendril {
     constructor(len, theta, x, y) {
-        this.segLen = 5;
+        this.segLen = random(3, 5);
         this.len = len;
         this.theta = theta;
         this.x = x;
         this.y = y;
     }
     show() {
-        if (this.len > 40) {
-            stroke(50);
-            strokeWeight(20);
-        } else if (this.len > 30) {
-            stroke(100);
-            //stroke(255, 0, 0);
+        if (this.len > 30) {
+            stroke(10);
             strokeWeight(10);
+        } else if (this.len > 25) {
+            stroke(20);
+            strokeWeight(7);
         } else if (this.len > 20) {
-            stroke(150);
-            //stroke(0, 255, 0);
-            strokeWeight(5);
+            stroke(30);
+            strokeWeight(4);
         } else if (this.len > 10) {
-            stroke(200);
-            //stroke(0, 0, 255);
+            stroke(40);
             strokeWeight(3);
         } else
-            stroke(255);
-        //stroke(255, 255, 0);
+            stroke(50);
 
         this.startX = this.x;
         this.startY = this.y;
         for (var i = 0; i < this.len; i++) {
+            if (this.theta - PI > 0 || this.theta < 0)
+                this.theta = random(PI/4, 3*PI/4);
             this.theta += random(-PI / 8, PI / 8);
             this.endX = this.startX + cos(this.theta) * this.segLen;
             this.endY = this.startY + sin(this.theta) * this.segLen;
@@ -37,7 +35,7 @@ class Tendril {
             this.startY = this.endY;
         }
         if (this.len > 3) {
-            var temp = new Cluster(this.len - 20, this.startX, this.startY);
+            var temp = new Cluster(this.len - 7, this.startX, this.startY);
             temp.show();
         }
     }

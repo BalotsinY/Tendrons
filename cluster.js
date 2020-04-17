@@ -1,9 +1,9 @@
 class Cluster {
     constructor(len, x, y) {
-        var stems = 7;
+        var stems = 3;
         this.tend = [];
         for (var i = 0; i < stems; i++) {
-            this.tend.push(new Tendril(len, random(0, 2 * PI), x, y));
+            this.tend.push(new Tendril(len, random(0, PI), x, y));
         }
     }
     show() {
